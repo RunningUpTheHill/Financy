@@ -36,7 +36,7 @@ function ExpensesBackground() {
     <div style={backgroundStyle}>
       <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
       <p style={{ ...textStyle, ...paragraphStyle }}>Shopping</p>     
-      <p style={{ ...textStyle, ...paragraphStyle }}>Groceriess</p>   
+      <p style={{ ...textStyle, ...paragraphStyle }}>Groceries</p>   
       <p style={{ ...textStyle, ...paragraphStyle }}>Dinning</p>
       <p style={{ ...textStyle, ...paragraphStyle }}>Bills & Utilities</p>
       <p style={{ ...textStyle, ...paragraphStyle }}>Transportation</p>
