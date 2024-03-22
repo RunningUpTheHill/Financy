@@ -16,7 +16,7 @@ const backgroundStyle = {
 const textStyle = {
   color: 'black',
   fontSize: '25px',
-  fontFamily: 'Choco', // Corrected the font name to 'Arial'
+  fontFamily: 'madimi one', // Corrected the font name to 'Arial'
   textAlign: 'left',
 };
 
