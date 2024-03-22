@@ -11,7 +11,7 @@ export default function App() {
     <div className="App">
     <header className="App-header">
 
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', }}>  
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginLeft: '-75px'}}>  
         <img src={money} alt="Second Image" style={{ width: '100px', height: '100px' }} />
         <div style={{ marginRight: '-40px'}}></div> {/* Adding space */}
         <img src={Financelogo} className="App-logo" alt="logo" style={{ alignItems: 'center', width: '400px', height: '200px', marginRight: '-20px' }} />
