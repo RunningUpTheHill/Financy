@@ -23,8 +23,7 @@ export default function LoginPage(){
             })
             .then(function (response) {
                 console.log(response);
-                //console.log(response.data);
-                navigate("/");
+                navigate("/FinancePage");
             })
             .catch(function (error) {
                 console.log(error, 'error');

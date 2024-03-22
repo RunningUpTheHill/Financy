@@ -1,8 +1,16 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
+  display: flex; /* Enables flexbox layout */
+  flex-direction: column; /* Stacks child elements vertically */
+  justify-content: center; /* Centers content vertically */
+  align-items: center; /* Centers content horizontally */
+  width: 100%; /* Full width */
+  min-height: calc(100vh - 4rem); /* Adjusting for padding */
+  margin: 0 auto; /* No margin */
   padding: 2rem;
   text-align: center;
+  background-color:  #ffb9de;
+  color: black;
+  font-family: 'madimi one';
 }
 
 .logo {
@@ -39,4 +47,8 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.background{
+  color:aqua,
 }
