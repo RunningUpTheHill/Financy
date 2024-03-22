@@ -34,7 +34,7 @@ const backgroundExpense = {
   display: 'inline-block',
   width: '900px',
   height: '525px',
-  backgroundColor: '#ffffff',
+  backgroundColor: '#74ee15',
   borderRadius: '25px',
   paddingLeft: '30px',
   paddingRight: '30px',
