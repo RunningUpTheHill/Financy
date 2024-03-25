@@ -49,31 +49,31 @@ export default function LoginPage(){
         <div style={backgroundlogin}>
           <form>
           <p>Login To Your Account</p>
-          <div style={{ marginLeft: '4px' }}>
+          <div>
           <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               id="form3Example3"
               className="form-control form-control-lg"
-              placeholder="Enter a valid email address"
-              style={{ backgroundColor: 'white', border: '1px solid #000000', borderRadius: '25px', padding: '0.5rem 1rem', color: 'black',}}
-/>            <label style={{ marginLeft: '2px', color: 'black' }}> Email address </label>
-              </div>
+              placeholder="Email"
+              style={{ backgroundColor: 'white', border: '1px solid #ffffff', borderRadius: '25px', padding: '0.5rem 1rem', color: 'black',}}
+          ></input>
+          </div>
+
+
           <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
-          <div className="form-outline mb-3"  style={{ marginLeft: '-25px' }}> 
+          <div className="form-outline mb-3"> 
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               id="form3Example4"
               className="form-control form-control-lg"
-              placeholder="Enter password"
-              style={{ backgroundColor: 'white', border: '1px solid #000000', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
+              placeholder="Password"
+              style={{ backgroundColor: 'white', border: '1px solid #ffffff', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
             />
-
-            <label style={{ marginLeft: '5px' }}>Password</label>
           </div>
 
           <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
