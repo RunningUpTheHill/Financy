@@ -2,6 +2,18 @@ import React, { useState } from "react";
 import axios from 'axios';
 import {useNavigate} from "react-router-dom";
 
+const backgroundlogin={
+  alignItems: 'center', // center items vertically (only works if 'display' is set to 'flex')
+  justifyContent: 'center', // center items horizontally (only works if 'display' is set to 'flex')
+  display: 'flex',// center items horizontally (only works if 'display' is set to 'flex')
+    width: '900px',
+    height: '450px',
+    backgroundColor: '#ffb9de',
+    borderRadius: '25px',
+    paddingLeft: '30px',
+    paddingRight: '30px',
+  }
+
 export default function LoginPage(){
 
     const [email,setEmail] = useState('');
@@ -33,38 +45,54 @@ export default function LoginPage(){
             });
         }
     }
+    return (
+        <div style={backgroundlogin}>
+          <form>
+          <p>Login To Your Account</p>
+          <div style={{ marginLeft: '4px' }}>
+          <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              id="form3Example3"
+              className="form-control form-control-lg"
+              placeholder="Enter a valid email address"
+              style={{ backgroundColor: 'white', border: '1px solid #000000', borderRadius: '25px', padding: '0.5rem 1rem', color: 'black',}}
+/>            <label style={{ marginLeft: '2px', color: 'black' }}> Email address </label>
+              </div>
+          <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
-  return (
-    <div>
-        <div className="container h-100">
-          <div className="container-fluid h-custom">
-            <div className="row d-flex justify-content-center align-items-center h-100">
-              <div className="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form>
-                  <div className="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
-                    <p className="lead fw-normal mb-0 me-3">Login To Your Account</p>
-                  </div>
+          <div className="form-outline mb-3"  style={{ marginLeft: '-25px' }}> 
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              id="form3Example4"
+              className="form-control form-control-lg"
+              placeholder="Enter password"
+              style={{ backgroundColor: 'white', border: '1px solid #000000', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
+            />
 
-                  <div className="form-outline mb-4">
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="form3Example3" className="form-control form-control-lg" placeholder="Enter a valid email address" />
-                    <label className="form-label" form="form3Example3">Email address</label>
-                  </div>
+            <label style={{ marginLeft: '5px' }}>Password</label>
+          </div>
+
+          <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
 
-                  <div className="form-outline mb-3">
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="form3Example4" className="form-control form-control-lg" placeholder="Enter password" />
-                    <label className="form-label" form="form3Example4">Password</label>
-                  </div>
-
-                  <div className="d-flex justify-content-between align-items-center">
+          <div className="d-flex justify-content-between align-items-center">
                     <div className="form-check mb-0">
                       <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
                       <label className="form-check-label" form="form2Example3">
                         Remember me
                       </label>
+
+                      <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
+
                     </div>
                     <a href="#!" className="text-body">Forgot password?</a>
                   </div>
+
+                  <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
                   <div className="text-center text-lg-start mt-4 pt-2">
                     <button type="button" className="btn btn-primary btn-lg" onClick={logInUser} >Login</button>
@@ -72,10 +100,6 @@ export default function LoginPage(){
                   </div>
 
                 </form>
-              </div>
             </div>
-          </div>
-        </div>
-    </div>
-  );
+      );
 }
