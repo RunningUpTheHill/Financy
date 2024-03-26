@@ -39,15 +39,31 @@ export default function RegisterPage(){
                   </div>
 
                   <div className="form-outline mb-4">
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="form3Example3" className="form-control form-control-lg" placeholder="Enter a valid email address" />
-                    <label className="form-label" form="form3Example3">Email address</label>
-                  </div>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      id="form3Example3" className="form-control form-control-lg" placeholder="Enter Email Address" 
+                      style={{ backgroundColor: 'white', border: '1px solid #ffffff', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
+                   />
+                    </div>
+
+                    <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
 
                   <div className="form-outline mb-3">
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="form3Example4" className="form-control form-control-lg" placeholder="Enter password" />
-                    <label className="form-label" form="form3Example4">Password</label>
-                  </div>
+                    <input
+                      type="password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                      id="form3Example4"
+                      className="form-control form-control-lg"
+                      placeholder="Enter Password"
+                      style={{ backgroundColor: 'white', border: '1px solid #ffffff', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
+                    />
+                     </div>
+
+                     <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
                   <div className="d-flex justify-content-between align-items-center">
                     <div className="form-check mb-0">
@@ -55,9 +71,13 @@ export default function RegisterPage(){
                       <label className="form-check-label" form="form2Example3">
                         Remember me
                       </label>
+                      <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
+
                     </div>
                     <a href="#!" className="text-body">Forgot password?</a>
                   </div>
+
+                  <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
                   <div className="text-center text-lg-start mt-4 pt-2">
                     <button type="button" className="btn btn-primary btn-lg" onClick={() => registerUser()} >Sign Up</button>
