@@ -1,7 +1,7 @@
 from flask import Flask, jsonify, request, session
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
-from models import db, User
+from models import db, User, Account, Transaction, bank_database_update
 
 app = Flask(__name__)
 
@@ -17,6 +17,7 @@ db.init_app(app)
 
 with app.app_context():
     db.create_all()
+    bank_database_update("bank.xlsx")
 
 @app.route("/")
 def hello_world():
@@ -62,5 +63,6 @@ def login_user():
         "id": user.id,
         "email": email
     })
+
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
