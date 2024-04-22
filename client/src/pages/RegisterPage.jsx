@@ -56,35 +56,12 @@ export default function RegisterPage() {
                                     <p className="lead fw-normal mb-0 me-3">Create Your Account</p>
                                 </div>
 
-                  <div className="form-outline mb-4">
-                    <input
-                      type="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      id="form3Example3" className="form-control form-control-lg" placeholder="Enter Email Address" 
-                      style={{ backgroundColor: 'white', border: '1px solid #ffffff', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
-                   />
-                    </div>
-
-                    <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
-
                                 <div className="form-outline mb-4">
                                     <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} onBlur={(e) => validateEmail(e.target.value)} id="form3Example3" className={`form-control form-control-lg ${emailError ? 'is-invalid' : ''}`} placeholder="Enter a valid email address" />
                                     <label className="form-label" htmlFor="form3Example3">Email address</label>
                                     {emailError && <div className="invalid-feedback">{emailError}</div>}
                                 </div>
 
-                  <div className="form-outline mb-3">
-                    <input
-                      type="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      id="form3Example4"
-                      className="form-control form-control-lg"
-                      placeholder="Enter Password"
-                      style={{ backgroundColor: 'white', border: '1px solid #ffffff', borderRadius: '25px', padding: '0.5rem 1rem', color: '#000000',}}
-                    />
-                     </div>
                                 <div className="form-outline mb-3">
                                     <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="form3Example4" className="form-control form-control-lg" placeholder="Enter password" />
                                     <label className="form-label" htmlFor="form3Example4">Password</label>
@@ -101,21 +78,6 @@ export default function RegisterPage() {
                                     />
                                 </div>
 
-                     <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
-
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="form-check mb-0">
-                      <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
-                      <label className="form-check-label" form="form2Example3">
-                        Remember me
-                      </label>
-                      <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
-
-                    </div>
-                    <a href="#!" className="text-body">Forgot password?</a>
-                  </div>
-
-                  <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
                                 <div className="d-flex justify-content-between align-items-center">
                                     <div className="form-check mb-0">
                                         <input className="form-check-input me-2" type="checkbox" value="" id="form2Example3" />
