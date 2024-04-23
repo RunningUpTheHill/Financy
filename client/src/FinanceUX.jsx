@@ -11,7 +11,7 @@ const backgroundAccounts = {
   alignItems: 'center', // center horizontally
   display: 'inline-block',
   width: '900px',
-  height: '300px',
+  height: '225px',
   backgroundColor: '#FDFD96',
   borderRadius: '25px',
   paddingLeft: '30px',
@@ -22,7 +22,7 @@ const backgroundSpending = {
   alignItems: 'center', // center horizontally
   display: 'inline-block',
   width: '900px',
-  height: '375px',
+  height: '225px',
   backgroundColor: '#82fff3',
   borderRadius: '25px',
   paddingLeft: '30px',
@@ -62,7 +62,7 @@ function FinanceUX() {
       <div style={backgroundAccounts}>
         <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNTS</h1>
         <p style={{ ...textStyle, ...paragraphStyle }}>Checking</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Savings</p>
+        <p style={{ ...textStyle}}>Savings</p>
       </div>
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
