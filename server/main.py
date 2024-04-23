@@ -65,7 +65,7 @@ def login_user():
     })
 
 # @app.route("/", methods=["POST"])
-# def create_transaction():
+# def display_account_info():    
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
