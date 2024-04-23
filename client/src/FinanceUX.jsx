@@ -68,11 +68,9 @@ function FinanceUX() {
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
 
       <div style={backgroundSpending}>
-        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>SPENDING</h1>
-        <p style={{ ...textStyle, ...paragraphStyle, }}>Earned</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Bills Paid</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Current Spend</p>
-        <p style={{ ...textStyle, }}>Left For Spending</p>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNT BALANCE</h1>
+        <p style={{ ...textStyle, ...paragraphStyle, }}>Earned Income</p>
+        <p style={{ ...textStyle, }}>Account Balance</p>
       </div>
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
