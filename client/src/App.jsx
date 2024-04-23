@@ -8,7 +8,12 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage"
 import FinancePage from "./pages/FinancePage";
-import Shopping from "./pages/Shopping";
+import Shopping from "./pages/Categories/Shopping";
+import Groceries from "./pages/Categories/Groceries";
+import Dinning from "./pages/Categories/Dinning";
+import Utilities from "./pages/Categories/Utilities";
+import Transportation from "./pages/Categories/Transportation";
+import EverythingElse from "./pages/Categories/EverythingElse";
 
 
 function App() {
@@ -21,7 +26,12 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/FinancePage" element={<FinancePage />} />
-                    <Route path="/Shopping" element={<Shopping />} />
+                    <Route path="/Categories/Shopping" element={<Shopping />} />
+                    <Route path="/Categories/Groceries" element={<Groceries />} />
+                    <Route path="/Categories/Dinning" element={<Dinning />} />
+                    <Route path="/Categories/Utilities" element={<Utilities />} />
+                    <Route path="/Categories/Transportation" element={<Transportation />} />
+                    <Route path="/Categories/EverythingElse" element={<EverythingElse />} />
 
 
                 </Routes>

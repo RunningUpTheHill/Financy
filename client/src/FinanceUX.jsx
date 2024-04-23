@@ -75,17 +75,20 @@ function FinanceUX() {
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
 
-      <div style={backgroundExpense}>
-        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Shopping</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Groceries</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Dining</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Bills & Utilities</p>
-        <p style={{ ...textStyle, ...paragraphStyle }}>Transportation</p>
-        <p style={{ ...textStyle, }}>Everything Else</p>
-      </div>
+      
+
+    <div style={backgroundExpense}>
+      <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
+      <p style={{ ...textStyle, ...paragraphStyle }}><Link to="/Categories/Shopping">Shopping</Link></p>     
+      <p style={{ ...textStyle, ...paragraphStyle }}><Link to="/Categories/Groceries">Groceries</Link></p>   
+      <p style={{ ...textStyle, ...paragraphStyle }}><Link to="/Categories/Dinning">Dinning</Link></p>
+      <p style={{ ...textStyle, ...paragraphStyle }}><Link to="/Categories/Utilities">Bills & Utilities</Link></p>
+      <p style={{ ...textStyle, ...paragraphStyle }}><Link to="/Categories/Transportation">Transportation</Link></p>
+      <p style={{ ...textStyle, }}><Link to="/Categories/EverythingElse">Everything Else</Link></p>
+    </div>
     </>
   );
 }
+
 
 export default FinanceUX;
