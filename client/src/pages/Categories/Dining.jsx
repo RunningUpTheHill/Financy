@@ -35,13 +35,13 @@ const ShoppingStyle = {
   };
   
 
-export default function Dinning() {
+export default function Dining() {
   return (
     <div className="App">
     <header className="App-header">
     <>
       <div style={ShoppingStyle}>
-        <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>Dinning</h1>
+        <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>Dining</h1>
       
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
               <div style={{ ...textStyle, ...halfWidth }}>Location</div>

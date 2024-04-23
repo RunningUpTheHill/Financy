@@ -10,7 +10,7 @@ import RegisterPage from "./pages/RegisterPage"
 import FinancePage from "./pages/FinancePage";
 import Shopping from "./pages/Categories/Shopping";
 import Groceries from "./pages/Categories/Groceries";
-import Dinning from "./pages/Categories/Dinning";
+import Dinning from "./pages/Categories/Dining";
 import Utilities from "./pages/Categories/Utilities";
 import Transportation from "./pages/Categories/Transportation";
 import EverythingElse from "./pages/Categories/EverythingElse";
