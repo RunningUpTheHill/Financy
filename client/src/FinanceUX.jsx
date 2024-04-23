@@ -6,7 +6,7 @@ import React from 'react';
 
 // Define the styles object
 
-const backgroundAccounts={
+const backgroundAccounts = {
   alignItems: 'center', // center horizontally
   display: 'inline-block',
   width: '900px',
@@ -26,7 +26,7 @@ const backgroundSpending = {
   borderRadius: '25px',
   paddingLeft: '30px',
   paddingRight: '30px',
-  
+
 };
 
 const backgroundExpense = {
@@ -38,7 +38,7 @@ const backgroundExpense = {
   borderRadius: '25px',
   paddingLeft: '30px',
   paddingRight: '30px',
-  
+
 };
 
 const textStyle = {
@@ -49,43 +49,40 @@ const textStyle = {
 };
 
 const paragraphStyle = {
-    borderBottom: '2px solid black', // Adds a border to the bottom of each paragraph
-    paddingBottom: '8px',
-    paddingTop: '2px',
-    marginBottom: '4px', // Adds
+  borderBottom: '2px solid black', // Adds a border to the bottom of each paragraph
+  paddingBottom: '8px',
+  paddingTop: '2px',
+  marginBottom: '4px', // Adds
 };
 
 function FinanceUX() {
   return (
     <>
-    <div style={backgroundAccounts}>
-      <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNTS</h1>
-      <p style={{ ...textStyle, ...paragraphStyle }}>Checking</p>     
-      <p style={{ ...textStyle, ...paragraphStyle }}>Savings</p>   
-      <p style={{ ...textStyle}}>Credit</p>
-    </div>
+      <div style={backgroundAccounts}>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNTS</h1>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Checking</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Savings</p>
+      </div>
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
 
-    <div style={backgroundSpending}>
-      <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>SPENDING</h1>
-      <p style={{ ...textStyle,...paragraphStyle, }}>Earned</p>
-      <p style={{ ...textStyle, ...paragraphStyle }}>Bills Paid</p>
-      <p style={{ ...textStyle, ...paragraphStyle }}>Current Spend</p>
-      <p style={{ ...textStyle, }}>Left For Spending</p>
-    </div>
+      <div style={backgroundSpending}>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNT BALANCE</h1>
+        <p style={{ ...textStyle, ...paragraphStyle, }}>Earned Income</p>
+        <p style={{ ...textStyle, }}>Remaining Balance</p>
+      </div>
 
-    <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
+      <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
 
-    <div style={backgroundExpense}>
-      <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
-      <p style={{ ...textStyle, ...paragraphStyle }}>Shopping</p>     
-      <p style={{ ...textStyle, ...paragraphStyle }}>Groceries</p>   
-      <p style={{ ...textStyle, ...paragraphStyle }}>Dining</p>
-      <p style={{ ...textStyle, ...paragraphStyle }}>Bills & Utilities</p>
-      <p style={{ ...textStyle, ...paragraphStyle }}>Transportation</p>
-      <p style={{ ...textStyle, }}>Everything Else</p>
-    </div>
+      <div style={backgroundExpense}>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Shopping</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Groceries</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Dining</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Bills & Utilities</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Transportation</p>
+        <p style={{ ...textStyle, }}>Everything Else</p>
+      </div>
     </>
   );
 }
