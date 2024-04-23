@@ -82,7 +82,7 @@ function FinanceUX() {
       <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
       <p style={{ ...textStyle, ...paragraphStyle }}><Link to="/Shopping">Shopping</Link></p>     
       <p style={{ ...textStyle, ...paragraphStyle }}>Groceries</p>   
-      <p style={{ ...textStyle, ...paragraphStyle }}>Dinning</p>
+      <p style={{ ...textStyle, ...paragraphStyle }}>Dining</p>
       <p style={{ ...textStyle, ...paragraphStyle }}>Bills & Utilities</p>
       <p style={{ ...textStyle, ...paragraphStyle }}>Transportation</p>
       <p style={{ ...textStyle, }}>Everything Else</p>
