@@ -8,6 +8,8 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage"
 import FinancePage from "./pages/FinancePage";
+import Shopping from "./pages/Shopping";
+
 
 function App() {
     return (
@@ -19,6 +21,9 @@ function App() {
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route path="/FinancePage" element={<FinancePage />} />
+                    <Route path="/Shopping" element={<Shopping />} />
+
+
                 </Routes>
             </BrowserRouter>
         </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 //import Dinning from './Dinning.png'; // Adjust this path to the actual location of your logo file
 //import shopping from './shopping.png'; // Adjust this path to the actual location of your logo file
 //import strawberry from './strawberry.png';
@@ -67,9 +68,11 @@ function FinanceUX() {
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
 
       <div style={backgroundSpending}>
-        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNT BALANCE</h1>
-        <p style={{ ...textStyle, ...paragraphStyle, }}>Earned Income</p>
-        <p style={{ ...textStyle, }}>Remaining Balance</p>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>SPENDING</h1>
+        <p style={{ ...textStyle, ...paragraphStyle, }}>Earned</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Bills Paid</p>
+        <p style={{ ...textStyle, ...paragraphStyle }}>Current Spend</p>
+        <p style={{ ...textStyle, }}>Left For Spending</p>
       </div>
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
