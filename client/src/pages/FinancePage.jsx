@@ -1,8 +1,6 @@
 import React from 'react';
 import FinanceUX from '../FinanceUX.jsx';
 import Financelogo from '../Images/giphy.gif';
-
-import money from '../Images/money.png';
 import '../App.css';
 
 export default function App() {
