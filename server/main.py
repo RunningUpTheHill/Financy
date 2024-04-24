@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request, session
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from models import db, User, Account, Transaction, bank_database_update
+import os
 
 app = Flask(__name__)
 
@@ -16,8 +17,11 @@ CORS(app, supports_credentials=True)
 db.init_app(app)
 
 with app.app_context():
-    db.create_all()
-    bank_database_update("bank.xlsx")
+    if not os.path.exists("instance/site.db"):
+        db.create_all()
+        bank_database_update("bank.xlsx")
+    else:
+        db.create_all()
 
 @app.route("/")
 def hello_world():
@@ -77,7 +81,7 @@ def retrieve_account():
     })
          
 
-@app.route("/retrieve_transactions", methods=["POST", "GET"]) # wrong method?
+@app.route("/retrieve_transactions", methods=["POST", "GET"])
 def display_account_info():
     # loads in initial values for expense categories
     accounts = Account.query.all()
