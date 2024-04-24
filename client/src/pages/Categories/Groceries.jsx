@@ -1,6 +1,7 @@
 import React from 'react';
 
 
+
 const GroceryStyle = {
     alignItems: 'center', // center horizontally
     display: 'inline-block',
@@ -47,7 +48,12 @@ export default function Groceries() {
               <div style={{ ...textStyle, ...halfWidth }}>Location</div>
               <div style={{ ...textStyle, ...halfWidth }}>Total</div>
               <div style={{ ...textStyle, ...halfWidth }}>Date</div>
+            </div>
 
+            <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+              <div style={{ ...textStyle, ...halfWidth }}>Walmart</div>
+              <div style={{ ...textStyle, ...halfWidth }}>0.00</div>
+              <div style={{ ...textStyle, ...halfWidth }}>4/24/2024</div>
             </div>
       </div>
       </>
