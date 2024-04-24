@@ -79,6 +79,21 @@ def retrieve_account():
     return jsonify({
         "account_no": number
     })
+
+@app.route("/retrieve_balance", methods=["GET"])
+def retrieve_balance():
+    accounts = Account.query.all()
+    transactions = Transaction.query.all()
+
+    for account in accounts: 
+        if account.user_id == account.user.id:
+            for transaction in transactions:
+                if (transaction.id == 50):
+                    balance = transaction.balance_amount
+
+    return jsonify({
+        "balance": balance
+    })
          
 
 @app.route("/retrieve_transactions", methods=["POST", "GET"])

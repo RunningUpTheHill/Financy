@@ -65,11 +65,21 @@ const halfWidth = {
 
 function FinanceUX() {
   const [account_no, setAccountNumber] = useState('');
-  const navigate = useNavigate();
+  const [transaction, setTransactions] = useState([]);
+  const [balance, setBalance] = useState([]);
+  // const [input, setInput] = useState('');
+
+  // const handleInput = (event) => {
+  //   setInput(event.target.value);
+  // };
 
   useEffect(() => {
     fetchAccountNumber();
     setAccountNumber(account_no);
+    fetchTransactions();
+    setTransactions(transaction);
+    fetchBalance();
+    setBalance(balance);
   }, []);
 
   const fetchAccountNumber = () => {
@@ -79,6 +89,44 @@ function FinanceUX() {
       .then(function (response) {
         console.log(response);
         setAccountNumber(strCheck(response.data.account_no));
+      })
+      .catch(function (error) {
+        console.log(error, 'error');
+        if (error.response.status === 401) {
+          alert("ENOENT");
+        }
+      })
+  }
+
+  const fetchTransactions = () => {
+    axios.get('http://127.0.0.1:8080/retrieve_transactions', {
+      billsUtils: "billsUtils",
+      dining: "dining",
+      everything_else: "everything_else",
+      groceries: "groceries",
+      income: "income",
+      shopping: "shopping",
+      transportation: "transportation"
+    })
+      .then(function (response) {
+        console.log(response);
+        setTransactions(response.data);
+      })
+      .catch(function (error) {
+        console.log(error, 'error');
+        if (error.response.status === 401) {
+          alert("ENOENT");
+        }
+      })
+  }
+
+  const fetchBalance = () => {
+    axios.get('http://127.0.0.1:8080/retrieve_balance', {
+      balance: "balance"
+    })
+      .then(function (response) {
+        console.log(response);
+        setBalance(response.data);
       })
       .catch(function (error) {
         console.log(error, 'error');
@@ -119,14 +167,14 @@ function FinanceUX() {
         <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNT BALANCE</h1>
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}>Account Balance</div>
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{balance.balance}</div>
         </div>
         <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}>Earned Income</div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: 'white' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.income}</div>
         </div>
       </div>
 
@@ -141,7 +189,7 @@ function FinanceUX() {
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Shopping">Shopping</Link></div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#CC99FF' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
 
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.shopping}</div>
         </div>
 
         <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
@@ -149,7 +197,7 @@ function FinanceUX() {
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Groceries">Groceries</Link></div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#A9D1F7' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.groceries}</div>
         </div>
 
         <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
@@ -157,7 +205,7 @@ function FinanceUX() {
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Dining">Dining</Link></div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#B4F0A7' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.dining}</div>
         </div>
 
         <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
@@ -166,7 +214,7 @@ function FinanceUX() {
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Utilities">Bills & Utilities</Link></div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFFFBF' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
 
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.billsUtils}</div>
         </div>
 
         <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
@@ -174,7 +222,7 @@ function FinanceUX() {
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Transportation">Transportation</Link></div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFDFBE' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.transportation}</div>
         </div>
 
         <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
@@ -182,7 +230,7 @@ function FinanceUX() {
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/EverythingElse">Everything Else</Link></div>
           <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFB1B0' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.everything_else}</div>
         </div>
       </div>
     </>
