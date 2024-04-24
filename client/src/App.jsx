@@ -10,7 +10,7 @@ import RegisterPage from "./pages/RegisterPage"
 import FinancePage from "./pages/FinancePage";
 import Shopping from "./pages/Categories/Shopping";
 import Groceries from "./pages/Categories/Groceries";
-import Dinning from "./pages/Categories/Dining";
+import Dining from "./pages/Categories/Dining";
 import Utilities from "./pages/Categories/Utilities";
 import Transportation from "./pages/Categories/Transportation";
 import EverythingElse from "./pages/Categories/EverythingElse";
@@ -28,7 +28,7 @@ function App() {
                     <Route path="/FinancePage" element={<FinancePage />} />
                     <Route path="/Categories/Shopping" element={<Shopping />} />
                     <Route path="/Categories/Groceries" element={<Groceries />} />
-                    <Route path="/Categories/Dinning" element={<Dinning />} />
+                    <Route path="/Categories/Dining" element={<Dining />} />
                     <Route path="/Categories/Utilities" element={<Utilities />} />
                     <Route path="/Categories/Transportation" element={<Transportation />} />
                     <Route path="/Categories/EverythingElse" element={<EverythingElse />} />
