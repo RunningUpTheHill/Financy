@@ -63,7 +63,7 @@ export default function LoginPage() {
                                 </div>
 
                                 <div className="form-outline mb-4">
-                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="form3Example3" className="form-control form-control-lg" placeholder="Enter Email address" style={{borderRadius: '100px',  border: 'none', backgroundColor: 'white', height: '30px', width: '200px', textAlign: 'center', borderColor: 'white', color: 'black'}} />
+                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="form3Example3" className="form-control form-control-lg" placeholder="Enter Email Address" style={{borderRadius: '100px',  border: 'none', backgroundColor: 'white', height: '30px', width: '200px', textAlign: 'center', borderColor: 'white', color: 'black'}} />
                                     <label className="form-label" htmlFor="form3Example3"></label>
                                 </div>
 
