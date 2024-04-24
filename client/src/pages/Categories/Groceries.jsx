@@ -68,7 +68,7 @@ export default function Groceries() {
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
               <div style={{ ...textStyle, ...halfWidth }}>Total</div>
               <div style={{ ...textStyle, ...halfWidth }}>Date</div>
-            </div>
+        </div>
 
               {/* Render grocery items dynamically */}
             {groceryData.map((item, index) => (
