@@ -73,44 +73,49 @@ function FinanceUX() {
   const [account_no, setAccountNumber] = useState('');
   const navigate = useNavigate();
 
-  useEffect(() => 
-  {
+  useEffect(() => {
     fetchAccountNumber();
     setAccountNumber(account_no);
   }, []);
 
-  const fetchAccountNumber = () => 
-  {
+  const fetchAccountNumber = () => {
     axios.get('http://127.0.0.1:8080/retrieve_account', {
       account_no: account_no
     })
-    .then(function(response){
-      console.log(response);
-      setAccountNumber(response.data.account_no);
-    })
-    .catch(function(error){
-      console.log(error, 'error');
-      if (error.response.status === 401) {
-        alert("ENOENT");
-      }
-    })
+      .then(function (response) {
+        console.log(response);
+        setAccountNumber(strCheck(response.data.account_no));
+      })
+      .catch(function (error) {
+        console.log(error, 'error');
+        if (error.response.status === 401) {
+          alert("ENOENT");
+        }
+      })
+  }
+
+  const strCheck = (str) => {
+    if (str.includes("'")) {
+      return str.replace("'", '');
+    }
+    return str;
   }
 
   return (
     <>
       <div style={backgroundAccounts}>
-            <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>Account</h1>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>Account</h1>
 
-            <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Checking</div>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>{account_no}</div>
-            </div>
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+        <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}>Checking</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{account_no}</div>
+        </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
-            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Savings</div>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>######</div>
-            </div>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}>Savings</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>######</div>
+        </div>
 
       </div>
 
@@ -119,64 +124,64 @@ function FinanceUX() {
       <div style={backgroundSpending}>
         <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNT BALANCE</h1>
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Earned Income</div>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>$0.00</div>
-            </div>
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}>Earned Income</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
-            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}>Account Balance</div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
-            </div>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}>Account Balance</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
       </div>
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
 
-      
 
-    <div style={backgroundExpense}>
-      <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
 
-      <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}><Link to="/Categories/Shopping">Shopping</Link></div>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>$0.00</div>
-            </div>
+      <div style={backgroundExpense}>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>EXPENSES</h1>
 
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+        <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Shopping">Shopping</Link></div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
 
-            <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}><Link to="/Categories/Groceries">Groceries</Link></div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
-            </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+        <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Groceries">Groceries</Link></div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
 
-            <div style={{...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}><Link to="/Categories/Dining">Dining</Link></div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
-            </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+        <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Dining">Dining</Link></div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
 
-            <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}><Link to="/Categories/Utilities">Bills & Utilities</Link></div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
-            </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+        <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Utilities">Bills & Utilities</Link></div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
 
-            <div style={{...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}><Link to="/Categories/Transportation">Transportation</Link></div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
-            </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
-            <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+        <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Transportation">Transportation</Link></div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
 
-            <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}><Link to="/Categories/EverythingElse">Everything Else</Link></div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
-            </div>
-    </div>
+        <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
+
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/EverythingElse">Everything Else</Link></div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>$0.00</div>
+        </div>
+      </div>
     </>
   );
 }
