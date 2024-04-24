@@ -33,6 +33,13 @@ class Transaction(db.Model):
     deposit_amount = db.Column(db.Float, nullable=True)
     balance_amount = db.Column(db.Float, nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey("accounts.id"), nullable=False)
+    expense_shopping = db.Column(db.Float, nullable = True, default= 0.0)
+    expense_groceries = db.Column(db.Float, nullable = True, default= 0.0)
+    expense_dining = db.Column(db.Float, nullable = True, default= 0.0)
+    expense_billsUtils = db.Column(db.Float, nullable = True, default= 0.0)
+    expense_transportation = db.Column(db.Float, nullable = True, default= 0.0)
+    expense_everything_else = db.Column(db.Float, nullable = True, default= 0.0)
+    income = db.Column(db.Float, nullable = True, default = 0.0)
 
 def bank_database_update(filename):
     from flask_bcrypt import Bcrypt
@@ -53,6 +60,7 @@ def bank_database_update(filename):
             db.session.add(account)
             db.session.commit()
 
-        transaction = Transaction(date=row["date"], transaction_details=row["transaction_details"], withdrawal_amount=row["withdrawal_amount"], deposit_amount=row["deposit_amount"], balance_amount=row["balance_amount"],  account_id=account.id)
+        transaction = Transaction(date=row["date"], transaction_details=row["transaction_details"], withdrawal_amount=row["withdrawal_amount"], 
+            deposit_amount=row["deposit_amount"], balance_amount=row["balance_amount"],  account_id=account.id)
         db.session.add(transaction)
         db.session.commit()

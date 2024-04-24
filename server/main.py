@@ -64,20 +64,22 @@ def login_user():
         "email": email
     })
 
-@app.route("/retrieveAccount", methods=["GET"])
-def retrieveAccount():
+@app.route("/retrieve_account", methods=["GET"])
+def retrieve_account():
     accounts = Account.query.all()
 
-    for account in accounts: # don't need to perform check
-        number = accounts.account_no
+    for account in accounts: 
+        if account.user_id == account.user.id:
+            number = accounts.account_no
 
     return jsonify({
         "account_no": number
     })
          
 
-@app.route("/retrieveTransactions", methods=["GET"])
+@app.route("/retrieve_transactions", methods=["POST"]) # wrong method?
 def display_account_info():
+    # loads in initial values for expense categories
     accounts = Account.query.all()
     income = 0
     shopping = 0
@@ -88,23 +90,33 @@ def display_account_info():
     dining = 0
 
     for account in accounts:
-        transactions = Transaction.query.all()
+        if account.user_id == account.user.id:
+            transactions = Transaction.query.all()
 
         for transaction in transactions:
             if (transaction.transaction_details == "Shopping"):
                 shopping += transaction.withdrawal_amount
+                transaction.expense_shopping = shopping
             elif (transaction.transaction_details == "Groceries"):
                 groceries += transaction.withdrawal_amount
+                transaction.expense_groceries = groceries
             elif (transaction.transaction_details == "Dining"):
                 dining += trasaction.withdrawal_amount
+                transaction.expense_dining = dining
             elif (transaction.transaction_details == "Bills & Utilities"):
                 billsUtils += trasaction.withdrawal_amount
+                transaction.expense_billsUtils = billsUtils
             elif (transaction.transaction_details == "Transportation"):
                 transportation += transaction.withdrawal_amount
+                transaction.expense_transportation = transportation
             elif (transaction.transaction_details == "Everything Else"):
                 misc += transaction.withdrawal_amount
+                transaction.expense_everything_else = misc
             elif (transaction.transaction_details == "Income"):
                 income += transaction.deposit_amount
+                transaction.income = income
+
+    db.session.commit()
 
     return  jsonify({
         "shopping" : shopping,
@@ -116,6 +128,39 @@ def display_account_info():
         "everything_else" : misc
     })
 
+@app.route("/input_expense", methods=["POST"])
+def input_expense():
+    data = request.get_json()
+    accounts = Accounts.query.all()
+    transactions = Transactions.query.all()
+
+    # "category" - income, groceries, shopping, dining, billsUtils, transportation, everything_else
+    # "amount" - amount to input 
+
+    for account in accounts:
+        if account.user_id == account.user.id:
+            for transaction in transactions:
+                if data.get('category') == "income":
+                    transaction.income += data.get('amount')
+                elif data.get('category') == "groceries":
+                    transaction.expense_groceries += data.get('amount')
+                elif data.get('category') == "shopping":
+                    transaction.expense_shopping += data.get('amount')
+                elif data.get('category') == "dining":
+                    transaction.expense_shopping += data.get('amount')
+                elif data.get('category') == "billsUtils":
+                    transaction.expense_billsUtils += data.get('amount')
+                elif data.get('category') == "transportation":
+                    transaction.expense_transportation += data.get('amount')
+                elif data.get('category') == "everything_else":
+                    transaction.expense_everything_else += data.get('amount')
+
+    db.session.commit()
+
+    return jsonify
+    ({"category": data.get('category'),
+    "amount": data.get('amount') 
+    })
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)
