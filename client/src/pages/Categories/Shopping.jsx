@@ -44,7 +44,6 @@ export default function Shopping() {
         <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>Shopping</h1>
       
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-              <div style={{ ...textStyle, ...halfWidth }}>Location</div>
               <div style={{ ...textStyle, ...halfWidth }}>Total</div>
               <div style={{ ...textStyle, ...halfWidth }}>Date</div>
 
