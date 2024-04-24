@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 
 
@@ -37,6 +37,27 @@ const GroceryStyle = {
   
 
 export default function Groceries() {
+  const [groceryData, setGroceryData] = useState([]);
+
+  useEffect(() => {
+    fetchGroceryData();
+  }, []);
+
+  const fetchGroceryData = async () => {
+    try {
+      const response = await fetch('/retrieve_transactions', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
+      const data = await response.json();
+      setGroceryData(data);
+    } catch (error) {
+      console.error('Error fetching grocery data:', error);
+    }
+  };
+
   return (
     <div className="App">
     <header className="App-header">
@@ -50,11 +71,13 @@ export default function Groceries() {
               <div style={{ ...textStyle, ...halfWidth }}>Date</div>
             </div>
 
-            <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
-              <div style={{ ...textStyle, ...halfWidth }}>Walmart</div>
-              <div style={{ ...textStyle, ...halfWidth }}>0.00</div>
-              <div style={{ ...textStyle, ...halfWidth }}>4/24/2024</div>
-            </div>
+              {/* Render grocery items dynamically */}
+            {groceryData.map((item, index) => (
+              <div key={index} style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
+                <div style={{ ...textStyle, ...halfWidth }}>{item.total}</div>
+                <div style={{ ...textStyle, ...halfWidth }}>{item.date}</div>
+              </div>
+            ))}
       </div>
       </>
 
