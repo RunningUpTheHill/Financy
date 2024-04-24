@@ -2,15 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
-//import Dinning from './Dinning.png'; // Adjust this path to the actual location of your logo file
-//import shopping from './shopping.png'; // Adjust this path to the actual location of your logo file
-//import strawberry from './strawberry.png';
-//import transport from './transport.png'
-
-// Define the styles object
 
 const backgroundAccounts = {
-  alignItems: 'center', // center horizontally
+  alignItems: 'center',
   display: 'inline-block',
   width: '900px',
   height: '225px',
@@ -21,7 +15,7 @@ const backgroundAccounts = {
 }
 
 const backgroundSpending = {
-  alignItems: 'center', // center horizontally
+  alignItems: 'center',
   display: 'inline-block',
   width: '900px',
   height: '225px',
@@ -33,7 +27,7 @@ const backgroundSpending = {
 };
 
 const backgroundExpense = {
-  alignItems: 'center', // center horizontally
+  alignItems: 'center',
   display: 'inline-block',
   width: '900px',
   height: '475px',
@@ -47,25 +41,25 @@ const backgroundExpense = {
 const textStyle = {
   color: 'black',
   fontSize: '25px',
-  fontFamily: 'madimi one', // Corrected the font name to 'Arial'
+  fontFamily: 'madimi one',
   textAlign: 'left',
 };
 
 const paragraphStyle = {
-  borderBottom: '2px solid black', // Adds a border to the bottom of each paragraph
+  borderBottom: '2px solid black',
   paddingBottom: '8px',
   paddingTop: '2px',
-  marginBottom: '4px', // Adds
+  marginBottom: '4px',
 };
 
 const accountNumberStyle = {
   ...textStyle,
-  textAlign: 'right', // Aligns account numbers to the right
+  textAlign: 'right',
 };
 
 const halfWidth = {
-  width: '50%', // Set width to 50% for each half
-  display: 'inline-block', // Make it inline-block to sit side by side
+  width: '50%',
+  display: 'inline-block',
 
 };
 
