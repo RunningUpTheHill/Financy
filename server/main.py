@@ -88,7 +88,7 @@ def retrieve_balance():
     for account in accounts: 
         if account.user_id == account.user.id:
             for transaction in transactions:
-                if (transaction.id == 50):
+                if (transaction.id == 16):
                     balance = transaction.balance_amount
 
     return jsonify({
