@@ -63,14 +63,18 @@ export default function LoginPage() {
                                 </div>
 
                                 <div className="form-outline mb-4">
-                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="form3Example3" className="form-control form-control-lg" placeholder="Enter a valid email address" />
-                                    <label className="form-label" htmlFor="form3Example3">Email address</label>
+                                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} id="form3Example3" className="form-control form-control-lg" placeholder="Enter Email address" style={{borderRadius: '100px',  border: 'none', backgroundColor: 'white', height: '30px', width: '200px', textAlign: 'center', borderColor: 'white', color: 'black'}} />
+                                    <label className="form-label" htmlFor="form3Example3"></label>
                                 </div>
 
+                                <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
+
                                 <div className="form-outline mb-3">
-                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="form3Example4" className="form-control form-control-lg" placeholder="Enter password" />
-                                    <label className="form-label" htmlFor="form3Example4">Password</label>
+                                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} id="form3Example4" className="form-control form-control-lg" placeholder="Enter Password"  style={{borderRadius: '100px',  border: 'none', backgroundColor: 'white', height: '30px', width: '200px', textAlign: 'center', borderColor: 'white', color: 'black'}}/>
+                                    <label className="form-label" htmlFor="form3Example4"></label>
                                 </div>
+
+                                <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
                                 <div className="d-flex justify-content-between align-items-center">
                                     <div className="form-check mb-0">
@@ -79,6 +83,8 @@ export default function LoginPage() {
                                     </div>
                                     <a href="#!" className="text-body">Forgot password?</a>
                                 </div>
+
+                                <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
 
                                 <div className="text-center text-lg-start mt-4 pt-2">
                                     <button type="button" className="btn btn-primary btn-lg" onClick={logInUser} >Login</button>
