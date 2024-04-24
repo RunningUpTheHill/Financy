@@ -156,7 +156,7 @@ function FinanceUX() {
 
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}>Savings</div>
-          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>######</div>
+          <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>573810249621</div>
         </div>
 
       </div>
