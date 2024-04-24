@@ -64,8 +64,58 @@ def login_user():
         "email": email
     })
 
-# @app.route("/", methods=["POST"])
-# def display_account_info():    
+@app.route("/retrieveAccount", methods=["GET"])
+def retrieveAccount():
+    accounts = Account.query.all()
+
+    for account in accounts: # don't need to perform check
+        number = accounts.account_no
+
+    return jsonify({
+        "account_no": number
+    })
+         
+
+@app.route("/retrieveTransactions", methods=["GET"])
+def display_account_info():
+    accounts = Account.query.all()
+    income = 0
+    shopping = 0
+    groceries = 0
+    billsUtils = 0
+    transportation = 0
+    misc = 0
+    dining = 0
+
+    for account in accounts:
+        transactions = Transaction.query.all()
+
+        for transaction in transactions:
+            if (transaction.transaction_details == "Shopping"):
+                shopping += transaction.withdrawal_amount
+            elif (transaction.transaction_details == "Groceries"):
+                groceries += transaction.withdrawal_amount
+            elif (transaction.transaction_details == "Dining"):
+                dining += trasaction.withdrawal_amount
+            elif (transaction.transaction_details == "Bills & Utilities"):
+                billsUtils += trasaction.withdrawal_amount
+            elif (transaction.transaction_details == "Transportation"):
+                transportation += transaction.withdrawal_amount
+            elif (transaction.transaction_details == "Everything Else"):
+                misc += transaction.withdrawal_amount
+            elif (transaction.transaction_details == "Income"):
+                income += transaction.deposit_amount
+
+    return  jsonify({
+        "shopping" : shopping,
+        "groceries": groceries,
+        "billsUtils" : billUtils,
+        "transportation" : transportation,
+        "income" : income,
+        "dining" : dining,
+        "everything_else" : misc
+    })
+
 
 if __name__ == "__main__":
     app.run(debug=True, port=8080)

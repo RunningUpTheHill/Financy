@@ -30,6 +30,7 @@ class Transaction(db.Model):
     date = db.Column(db.Date, nullable=False)
     transaction_details = db.Column(db.String(200), nullable=False)
     withdrawal_amount = db.Column(db.Float, nullable=True)
+    deposit_amount = db.Column(db.Float, nullable=True)
     balance_amount = db.Column(db.Float, nullable=False)
     account_id = db.Column(db.Integer, db.ForeignKey("accounts.id"), nullable=False)
 
@@ -52,6 +53,6 @@ def bank_database_update(filename):
             db.session.add(account)
             db.session.commit()
 
-        transaction = Transaction(date=row["date"], transaction_details=row["transaction_details"], withdrawal_amount=row["withdrawal_amount"], balance_amount=row["balance_amount"], account_id=account.id)
+        transaction = Transaction(date=row["date"], transaction_details=row["transaction_details"], withdrawal_amount=row["withdrawal_amount"], deposit_amount=row["deposit_amount"], balance_amount=row["balance_amount"],  account_id=account.id)
         db.session.add(transaction)
         db.session.commit()
