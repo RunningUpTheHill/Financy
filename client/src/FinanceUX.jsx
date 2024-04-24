@@ -64,7 +64,6 @@ const accountNumberStyle = {
 const halfWidth = {
   width: '50%', // Set width to 50% for each half
   display: 'inline-block', // Make it inline-block to sit side by side
-  textAlign: 'center', // Center the text horizontally
 
 };
 
@@ -73,14 +72,18 @@ function FinanceUX() {
     <>
       <div style={backgroundAccounts}>
             <h1 style={{textStyle, textAlign: 'center', fontSize: '30px' }}>Account</h1>
+
             <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
                   <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Checking</div>
                   <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>######</div>
             </div>
+            <div style={{ marginBottom: '10px' }}></div> {/* Adding space */}
+
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Savings</div>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>######</div>
+                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}>Savings</div>
+                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>######</div>
             </div>
+
       </div>
 
       <div style={{ marginBottom: '25px' }}></div> {/* Adding space */}
