@@ -104,7 +104,7 @@ function FinanceUX() {
   return (
     <>
       <div style={backgroundAccounts}>
-        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>Account</h1>
+        <h1 style={{ textStyle, textAlign: 'center', fontSize: '30px' }}>ACCOUNT</h1>
 
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}>Checking</div>
