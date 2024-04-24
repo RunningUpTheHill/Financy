@@ -70,7 +70,7 @@ def retrieve_account():
 
     for account in accounts: 
         if account.user_id == account.user.id:
-            number = accounts.account_no
+            number = account.account_no
 
     return jsonify({
         "account_no": number

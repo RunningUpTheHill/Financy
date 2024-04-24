@@ -1,5 +1,7 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 //import Dinning from './Dinning.png'; // Adjust this path to the actual location of your logo file
 //import shopping from './shopping.png'; // Adjust this path to the actual location of your logo file
 //import strawberry from './strawberry.png';
@@ -68,6 +70,32 @@ const halfWidth = {
 };
 
 function FinanceUX() {
+  const [account_no, setAccountNumber] = useState('');
+  const navigate = useNavigate();
+
+  useEffect(() => 
+  {
+    fetchAccountNumber();
+    setAccountNumber(account_no);
+  }, []);
+
+  const fetchAccountNumber = () => 
+  {
+    axios.get('http://127.0.0.1:8080/retrieve_account', {
+      account_no: account_no
+    })
+    .then(function(response){
+      console.log(response);
+      setAccountNumber(response.data.account_no);
+    })
+    .catch(function(error){
+      console.log(error, 'error');
+      if (error.response.status === 401) {
+        alert("ENOENT");
+      }
+    })
+  }
+
   return (
     <>
       <div style={backgroundAccounts}>
@@ -75,13 +103,13 @@ function FinanceUX() {
 
             <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
                   <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Checking</div>
-                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>######</div>
+                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>{account_no}</div>
             </div>
             <div style={{ marginBottom: '15px' }}></div> {/* Adding space */}
 
             <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
-                  <div style={{ ...textStyle, paragraphStyle,...halfWidth, textAlign: 'left' }}>Savings</div>
-                  <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>######</div>
+                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'left' }}>Savings</div>
+                  <div style={{ ...textStyle, ...halfWidth,textAlign: 'right' }}>######</div>
             </div>
 
       </div>
