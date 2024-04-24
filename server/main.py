@@ -77,7 +77,7 @@ def retrieve_account():
     })
          
 
-@app.route("/retrieve_transactions", methods=["POST"]) # wrong method?
+@app.route("/retrieve_transactions", methods=["POST", "GET"]) # wrong method?
 def display_account_info():
     # loads in initial values for expense categories
     accounts = Account.query.all()
@@ -91,7 +91,7 @@ def display_account_info():
 
     for account in accounts:
         if account.user_id == account.user.id:
-            transactions = Transaction.query.all()
+            transactions = Transaction.query.filter_by(account_id=account.id).all()
 
         for transaction in transactions:
             if (transaction.transaction_details == "Shopping"):
@@ -101,10 +101,10 @@ def display_account_info():
                 groceries += transaction.withdrawal_amount
                 transaction.expense_groceries = groceries
             elif (transaction.transaction_details == "Dining"):
-                dining += trasaction.withdrawal_amount
+                dining += transaction.withdrawal_amount
                 transaction.expense_dining = dining
             elif (transaction.transaction_details == "Bills & Utilities"):
-                billsUtils += trasaction.withdrawal_amount
+                billsUtils += transaction.withdrawal_amount
                 transaction.expense_billsUtils = billsUtils
             elif (transaction.transaction_details == "Transportation"):
                 transportation += transaction.withdrawal_amount
@@ -121,7 +121,7 @@ def display_account_info():
     return  jsonify({
         "shopping" : shopping,
         "groceries": groceries,
-        "billsUtils" : billUtils,
+        "billsUtils" : billsUtils,
         "transportation" : transportation,
         "income" : income,
         "dining" : dining,
@@ -157,10 +157,35 @@ def input_expense():
 
     db.session.commit()
 
-    return jsonify
-    ({"category": data.get('category'),
+    return jsonify ({"category": data.get('category'),
     "amount": data.get('amount') 
     })
 
+@app.route("/accounts", methods=["GET"])
+def get_all_accounts():
+    try:
+        accounts = Account.query.all()
+
+        response = "Account Numbers and Transactions:\n\n"
+
+        for account in accounts:
+            response += f"Account Number: {account.account_no}\n"
+            transactions = Transaction.query.filter_by(account_id=account.id).all()
+            for transaction in transactions:
+                response += f"  Transaction ID: {transaction.id}\n"
+                response += f"    Date: {transaction.date.strftime('%Y-%m-%d')}\n"
+                response += f"    Details: {transaction.transaction_details}\n"
+                response += f"    Withdrawal Amount: {transaction.withdrawal_amount}\n"
+                response += f"    Balance Amount: {transaction.balance_amount}\n"
+                response += f"    Deposit Amount: {transaction.deposit_amount}\n"
+                print("Deposit Amount:", transaction.deposit_amount)
+            response += "\n"
+
+        return response, 200
+    
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+        return "An error occurred while processing the request", 500
+    
 if __name__ == "__main__":
     app.run(debug=True, port=8080)

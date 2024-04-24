@@ -60,7 +60,14 @@ def bank_database_update(filename):
             db.session.add(account)
             db.session.commit()
 
-        transaction = Transaction(date=row["date"], transaction_details=row["transaction_details"], withdrawal_amount=row["withdrawal_amount"], 
-            deposit_amount=row["deposit_amount"], balance_amount=row["balance_amount"],  account_id=account.id)
+        transaction = Transaction(
+            date=row["date"],
+            transaction_details=row["transaction_details"],
+            withdrawal_amount=row["withdrawal_amount"],
+            deposit_amount=row["deposit_amount"],
+            balance_amount=row["balance_amount"],
+            account_id=account.id
+        )
+
         db.session.add(transaction)
         db.session.commit()
