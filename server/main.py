@@ -151,28 +151,27 @@ def display_account_info():
 def input_expense():
     data = request.get_json()
     accounts = Account.query.all()
-    transactions = Transaction.query.all()
 
     # "category" - income, groceries, shopping, dining, billsUtils, transportation, everything_else
     # "amount" - amount to input 
 
     for account in accounts:
-        if account.user_id == account.user.id:
-            for transaction in transactions:
-                if data.get('category') == "income":
-                    transaction.income += data.get('amount')
-                elif data.get('category') == "groceries":
-                    transaction.expense_groceries += data.get('amount')
-                elif data.get('category') == "shopping":
-                    transaction.expense_shopping += data.get('amount')
-                elif data.get('category') == "dining":
-                    transaction.expense_shopping += data.get('amount')
-                elif data.get('category') == "billsUtils":
-                    transaction.expense_billsUtils += data.get('amount')
-                elif data.get('category') == "transportation":
-                    transaction.expense_transportation += data.get('amount')
-                elif data.get('category') == "everything_else":
-                    transaction.expense_everything_else += data.get('amount')
+        transactions = Transaction.query.filter_by(account_id=account.id).all()
+        for transaction in transactions:
+            if data.get('category') == "income":
+                transaction.income += data.get('amount')
+            elif data.get('category') == "groceries":
+                transaction.expense_groceries += data.get('amount')
+            elif data.get('category') == "shopping":
+                transaction.expense_shopping += data.get('amount')
+            elif data.get('category') == "dining":
+                transaction.expense_shopping += data.get('amount')
+            elif data.get('category') == "billsUtils":
+                transaction.expense_billsUtils += data.get('amount')
+            elif data.get('category') == "transportation":
+                transaction.expense_transportation += data.get('amount')
+            elif data.get('category') == "everything_else":
+                transaction.expense_everything_else += data.get('amount')
 
     db.session.commit()
 
@@ -197,7 +196,7 @@ def get_all_accounts():
                 response += f"    Withdrawal Amount: {transaction.withdrawal_amount}\n"
                 response += f"    Balance Amount: {transaction.balance_amount}\n"
                 response += f"    Deposit Amount: {transaction.deposit_amount}\n"
-                print("Deposit Amount:", transaction.deposit_amount)
+                response += f"    Income Amount: {transaction.income}\n"
             response += "\n"
 
         return response, 200
