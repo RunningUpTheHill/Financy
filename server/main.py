@@ -150,8 +150,8 @@ def display_account_info():
 @app.route("/input_expense", methods=["POST"])
 def input_expense():
     data = request.get_json()
-    accounts = Accounts.query.all()
-    transactions = Transactions.query.all()
+    accounts = Account.query.all()
+    transactions = Transaction.query.all()
 
     # "category" - income, groceries, shopping, dining, billsUtils, transportation, everything_else
     # "amount" - amount to input 
