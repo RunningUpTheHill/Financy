@@ -67,11 +67,16 @@ function FinanceUX() {
   const [account_no, setAccountNumber] = useState('');
   const [transaction, setTransactions] = useState([]);
   const [balance, setBalance] = useState([]);
-  // const [input, setInput] = useState('');
+  const [input, setInput] = useState('');
+  const [category, setCategory] = useState('');
 
-  // const handleInput = (event) => {
-  //   setInput(event.target.value);
-  // };
+  const handleInput = (event) => {
+    setInput(event.target.value);
+  };
+
+  const getCategory = (category) => {
+    setCategory(category)
+  };
 
   useEffect(() => {
     fetchAccountNumber();
@@ -143,6 +148,25 @@ function FinanceUX() {
     return str;
   }
 
+  const sendAmount = (amount, category) => {
+    axios.post('http://127.0.0.1:8080/input_expense', {
+      amount, category
+    })
+      .then(function (repsonse) {
+        console.log(response.data);
+      })
+      .catch(function (error) {
+        console.error(error);
+      })
+  }
+
+  const handleEnter = (event, category) => {
+    if (event.key === 'Enter') {
+      getCategory(category);
+      sendAmount(input, category);
+    }
+  }
+
   return (
     <>
       <div style={backgroundAccounts}>
@@ -173,7 +197,7 @@ function FinanceUX() {
 
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}>Earned Income</div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: 'white' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" value={input} onChange={handleInput} onKeyDown={(event) => handleEnter(event, 'income')} style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: 'white', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.income}</div>
         </div>
       </div>
@@ -187,7 +211,7 @@ function FinanceUX() {
 
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Shopping">Shopping</Link></div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#CC99FF' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#CC99FF', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
 
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.shopping}</div>
         </div>
@@ -196,7 +220,7 @@ function FinanceUX() {
 
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Groceries">Groceries</Link></div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#A9D1F7' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#A9D1F7', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.groceries}</div>
         </div>
 
@@ -204,7 +228,7 @@ function FinanceUX() {
 
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Dining">Dining</Link></div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#B4F0A7' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#B4F0A7', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.dining}</div>
         </div>
 
@@ -212,7 +236,7 @@ function FinanceUX() {
 
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Utilities">Bills & Utilities</Link></div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFFFBF' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFFFBF', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
 
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.billsUtils}</div>
         </div>
@@ -221,7 +245,7 @@ function FinanceUX() {
 
         <div style={{ ...paragraphStyle, display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/Transportation">Transportation</Link></div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFDFBE' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFDFBE', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.transportation}</div>
         </div>
 
@@ -229,7 +253,7 @@ function FinanceUX() {
 
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           <div style={{ ...textStyle, paragraphStyle, ...halfWidth, textAlign: 'left' }}><Link to="/Categories/EverythingElse">Everything Else</Link></div>
-          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFB1B0' , borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' }}} />
+          <input type="text" placeholder="Enter Amount" style={{ ...textStyle, ...halfWidth, textAlign: 'center', border: 'none', backgroundColor: '#FFB1B0', borderRadius: '30px', width: '250px', '::placeholder': { color: 'black' } }} />
           <div style={{ ...textStyle, ...halfWidth, textAlign: 'right' }}>{transaction.everything_else}</div>
         </div>
       </div>
